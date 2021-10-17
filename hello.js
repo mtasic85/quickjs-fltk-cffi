@@ -44,7 +44,7 @@ const _quickjs_ffi_wrap_ptr_func_decl = (lib, name, nargs, ...types) => {
     return js_func;
 };
 
-const LIBCFLTK = './libcfltk.so.1.2.5';
+const LIBCFLTK = './libcfltk.so';
 
 // const Fl_init_all = _quickjs_ffi_wrap_ptr_func_decl(LIBCFLTK, 'Fl_init_all', null, 'void');
 const Fl_register_images = _quickjs_ffi_wrap_ptr_func_decl(LIBCFLTK, 'Fl_register_images', null, 'void')
