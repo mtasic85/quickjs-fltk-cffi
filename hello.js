@@ -1,6 +1,8 @@
 import { CFunction, CCallback } from './quickjs-ffi.js';
 import { Fl_init_all, Fl_lock, Fl_run } from './quickjs-fltk/cfl.js';
+import { Fl_register_images } from './quickjs-fltk/cfl_image.js';
 import { Fl_Widget_set_label } from './quickjs-fltk/cfl_widget.js';
+// import { Fl_Window_new } from './quickjs-fltk/cfl_window.js';
 
 const _quickjs_ffi_wrap_ptr_func_decl = (lib, name, nargs, ...types) => {
     // wrap C function
@@ -47,7 +49,7 @@ const _quickjs_ffi_wrap_ptr_func_decl = (lib, name, nargs, ...types) => {
 const LIBCFLTK = './libcfltk.so';
 
 // const Fl_init_all = _quickjs_ffi_wrap_ptr_func_decl(LIBCFLTK, 'Fl_init_all', null, 'void');
-const Fl_register_images = _quickjs_ffi_wrap_ptr_func_decl(LIBCFLTK, 'Fl_register_images', null, 'void')
+// const Fl_register_images = _quickjs_ffi_wrap_ptr_func_decl(LIBCFLTK, 'Fl_register_images', null, 'void')
 // const Fl_lock = _quickjs_ffi_wrap_ptr_func_decl(LIBCFLTK, 'Fl_lock', null, 'int');
 const Fl_Window_new = _quickjs_ffi_wrap_ptr_func_decl(LIBCFLTK, 'Fl_Window_new', null, 'pointer', 'int', 'int', 'int', 'int', 'string');
 const Fl_Button_new = _quickjs_ffi_wrap_ptr_func_decl(LIBCFLTK, 'Fl_Button_new', null, 'pointer', 'int', 'int', 'int', 'int', 'string');
