@@ -1,4 +1,5 @@
 import { CFunction, CCallback } from './quickjs-ffi.js';
+import { Fl_Widget_set_label } from './cfl_widget.js';
 
 const _quickjs_ffi_wrap_ptr_func_decl = (lib, name, nargs, ...types) => {
     // wrap C function
@@ -51,7 +52,7 @@ const Fl_Window_new = _quickjs_ffi_wrap_ptr_func_decl(LIBCFLTK, 'Fl_Window_new',
 const Fl_Button_new = _quickjs_ffi_wrap_ptr_func_decl(LIBCFLTK, 'Fl_Button_new', null, 'pointer', 'int', 'int', 'int', 'int', 'string');
 const Fl_Window_end = _quickjs_ffi_wrap_ptr_func_decl(LIBCFLTK, 'Fl_Window_end', null, 'void', 'pointer');
 const Fl_Window_show = _quickjs_ffi_wrap_ptr_func_decl(LIBCFLTK, 'Fl_Window_show', null, 'void', 'pointer');
-const Fl_Widget_set_label = _quickjs_ffi_wrap_ptr_func_decl(LIBCFLTK, 'Fl_Widget_set_label', null, 'void', 'pointer', 'string');
+// const Fl_Widget_set_label = _quickjs_ffi_wrap_ptr_func_decl(LIBCFLTK, 'Fl_Widget_set_label', null, 'void', 'pointer', 'string');
 const Fl_Window_set_label = _quickjs_ffi_wrap_ptr_func_decl(LIBCFLTK, 'Fl_Window_set_label', null, 'void', 'pointer', 'string');
 const Fl_run = _quickjs_ffi_wrap_ptr_func_decl(LIBCFLTK, 'Fl_run', null, 'int');
 
