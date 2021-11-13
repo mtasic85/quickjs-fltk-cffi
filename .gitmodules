@@ -7,3 +7,6 @@
 [submodule "cfltk"]
 	path = cfltk
 	url = https://github.com/MoAlyousef/cfltk.git
+[submodule "pycparser"]
+	path = pycparser
+	url = git@github.com:eliben/pycparser.git
