@@ -36,4 +36,6 @@ libcfltk.so*
 qjs*
 venv/
 quickjs-fltk/*.h
+quickjs-fltk/*.js
 quickjs-ffi.*
+dist/
