@@ -1,9 +1,16 @@
-import { Fl_init_all, Fl_lock, Fl_run } from './quickjs-fltk/cfl.js';
-import { Fl_register_images } from './quickjs-fltk/cfl_image.js';
-import { Fl_Widget_set_label } from './quickjs-fltk/cfl_widget.js';
-import { Fl_Window_new, Fl_Window_end, Fl_Window_show, Fl_Window_set_label } from './quickjs-fltk/cfl_window.js';
-import { Fl_Button_new, Fl_Button_set_callback } from './quickjs-fltk/cfl_button.js';
+// import { Fl_init_all, Fl_lock, Fl_run } from './quickjs-fltk/cfl.js';
+// import { Fl_register_images } from './quickjs-fltk/cfl_image.js';
+// import { Fl_Widget_set_label } from './quickjs-fltk/cfl_widget.js';
+// import { Fl_Window_new, Fl_Window_end, Fl_Window_show, Fl_Window_set_label } from './quickjs-fltk/cfl_window.js';
+// import { Fl_Button_new, Fl_Button_set_callback } from './quickjs-fltk/cfl_button.js';
 
+import {
+    Fl_init_all, Fl_lock, Fl_run,
+    Fl_register_images,
+    Fl_Widget_set_label,
+    Fl_Window_new, Fl_Window_end, Fl_Window_show, Fl_Window_set_label,
+    Fl_Button_new, Fl_Button_set_callback,
+} from './quickjs-fltk/fltk.js';
 
 function b0_cb(widget, win) {
     Fl_Widget_set_label(widget, "b0 Works!");
