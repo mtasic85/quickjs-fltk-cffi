@@ -17,6 +17,7 @@ function main() {
     let w = Fl.Window.new(100, 100, 400, 300, "Hello ...");
     let b0 = Fl.Button.new(160, 110, 80, 40, "Click me");
     let b1 = Fl.Button.new(160, 210, 80, 40, "Click me, too");
+    w.resizable(w);
     w.end();
     w.show();
     
