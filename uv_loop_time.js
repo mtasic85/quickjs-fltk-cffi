@@ -27,7 +27,7 @@ function main() {
   r = uv_loop_alive(loop)
   console.log('uv_loop_alive', r);
 
-  r = uv_timer_start(timer, cb, 0, 2000);
+  r = uv_timer_start(timer, cb, 1_000, 2_000);
   console.log('uv_timer_start', r);
 
   r = uv_backend_timeout(loop);
