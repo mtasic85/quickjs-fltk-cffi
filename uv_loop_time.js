@@ -1,7 +1,10 @@
 import {
   uv_default_loop,
+  uv_loop_alive,
   uv_timer_init,
   uv_timer_start,
+  uv_backend_timeout,
+  uv_run,
   uv_run_mode,
   malloc,
   free,
@@ -19,14 +22,19 @@ function main() {
   let r;
 
   r = uv_timer_init(loop, timer);
-  console.log(r);
+  console.log('uv_timer_init', r);
 
-  console.log('uv_timer_start:', uv_timer_start)
-  r = uv_timer_start(timer, cb, 1000, 0);
-  console.log(r);
+  r = uv_loop_alive(loop)
+  console.log('uv_loop_alive', r);
+
+  r = uv_timer_start(timer, cb, 0, 2000);
+  console.log('uv_timer_start', r);
+
+  r = uv_backend_timeout(loop);
+  console.log('uv_backend_timeout', r);
   
   r = uv_run(loop, uv_run_mode.UV_RUN_DEFAULT);
-  console.log(r);
+  console.log('uv_run', r);
 }
 
 main();
