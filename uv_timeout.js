@@ -15,6 +15,9 @@ import {
 
 let loop = uv_default_loop();
 
+/*
+ * timeout
+ */
 function setTimeout(callback, delay) {
   let timer = malloc(sizeof_uv_timer_t);
   let r;
@@ -30,6 +33,14 @@ function setTimeout(callback, delay) {
   return timer;
 }
 
+function clearTimeout(timer) {
+  uv_timer_stop(timer);
+  free(timer);
+}
+
+/*
+ * interval
+ */
 function setInterval(callback, interval) {
   let timer = malloc(sizeof_uv_timer_t);
   let r;
@@ -44,16 +55,14 @@ function setInterval(callback, interval) {
   return timer;
 }
 
-function clearTimeout(timer) {
-  uv_timer_stop(timer);
-  free(timer);
-}
-
 function clearInterval(timer) {
   uv_timer_stop(timer);
   free(timer);
 }
 
+/*
+ * example
+ */
 setTimeout(() => {
   console.log('Hello timeout 1');
 }, 2_000);
