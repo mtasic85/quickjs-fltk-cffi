@@ -42,11 +42,18 @@ function build () {
 
     # generate cffi bindings
     cd $ENV_PATH
+
     ./qjs-cffi \
         -sizeof-cflags="-I$CACHE_PACKAGE_PATH/cfltk/include" \
         -sizeof-include="cfl_box.h,cfl_browser.h,cfl_button.h,cfl_dialog.h,cfl_draw.h,cfl_enums.h,cfl_group.h,cfl.h,cfl_image.h,cfl_input.h,cfl_macros.h,cfl_menu.h,cfl_misc.h,cfl_printer.h,cfl_surface.h,cfl_table.h,cfl_text.h,cfl_tree.h,cfl_utils.h,cfl_valuator.h,cfl_widget.h,cfl_window.h" \
         -i $CACHE_PACKAGE_PATH/cfltk/include \
         -o $CACHE_PACKAGE_PATH/quickjs-fltk-cffi
+
+    ./qjs-cffi \
+        -sizeof-cflags="-I$CACHE_PACKAGE_PATH/cfltk/include" \
+        -sizeof-include="cfl_box.h,cfl_browser.h,cfl_button.h,cfl_dialog.h,cfl_draw.h,cfl_enums.h,cfl_group.h,cfl.h,cfl_image.h,cfl_input.h,cfl_macros.h,cfl_menu.h,cfl_misc.h,cfl_printer.h,cfl_surface.h,cfl_table.h,cfl_text.h,cfl_tree.h,cfl_utils.h,cfl_valuator.h,cfl_widget.h,cfl_window.h" \
+        -i $CACHE_PACKAGE_PATH/cfltk/include \
+        -o $CACHE_PACKAGE_PATH/quickjs-fltk-cffi/fltk.js
 
     echo build $PACKAGE_NAME $PACKAGE_VER
 }
