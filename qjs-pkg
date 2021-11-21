@@ -18,7 +18,9 @@ function build () {
     local ENV_PATH=$1
     local CACHE_PACKAGE_PATH=$2
 
+    # compile cfltk
     cd cfltk
+    
     cmake -B bin -S . \
      -DCMAKE_BUILD_TYPE=Release \
      -DOPTION_USE_SYSTEM_LIBPNG=OFF \
@@ -35,7 +37,16 @@ function build () {
      -DCMAKE_C_FLAGS="-fPIC" \
      -DCMAKE_SHARED_LINKER_FLAGS="-fPIC" \
      -DCFLTK_BUILD_SHARED=ON
+    
     cmake --build bin --parallel
+
+    # generate cffi bindings
+    cd $ENV_PATH
+    ./qjs-cffi \
+        -sizeof-cflags="-I$CACHE_PACKAGE_PATH/cfltk/include" \
+        -sizeof-include="cfl_box.h,cfl_browser.h,cfl_button.h,cfl_dialog.h,cfl_draw.h,cfl_enums.h,cfl_group.h,cfl.h,cfl_image.h,cfl_input.h,cfl_macros.h,cfl_menu.h,cfl_misc.h,cfl_printer.h,cfl_surface.h,cfl_table.h,cfl_text.h,cfl_tree.h,cfl_utils.h,cfl_valuator.h,cfl_widget.h,cfl_window.h" \
+        -i $CACHE_PACKAGE_PATH/cfltk/include \
+        -o $CACHE_PACKAGE_PATH/quickjs-fltk-cffi
 
     echo build $PACKAGE_NAME $PACKAGE_VER
 }
@@ -47,6 +58,7 @@ function install () {
     local LOCAL_PACKAGE_PATH=$3
 
     cp $ENV_PATH/$CACHE_PACKAGE_PATH/cfltk/bin/libcfltk.so $ENV_PATH/$LOCAL_PACKAGE_PATH/libcfltk.so
+    cp $ENV_PATH/$CACHE_PACKAGE_PATH/quickjs-fltk-cffi/* $ENV_PATH/$LOCAL_PACKAGE_PATH
 
     echo install $PACKAGE_NAME $PACKAGE_VER
 }
