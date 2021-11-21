@@ -7,6 +7,7 @@ function prepare () {
     # args
     local ENV_PATH=$1
     local CACHE_PACKAGE_PATH=$2
+    local LOCAL_PACKAGE_PATH=$3
 
     git submodule update --init --recursive
 
@@ -17,6 +18,7 @@ function build () {
     # args
     local ENV_PATH=$1
     local CACHE_PACKAGE_PATH=$2
+    local LOCAL_PACKAGE_PATH=$3
 
     # compile cfltk
     cd cfltk
@@ -47,13 +49,15 @@ function build () {
         -sizeof-cflags="-I$CACHE_PACKAGE_PATH/cfltk/include" \
         -sizeof-include="cfl_box.h,cfl_browser.h,cfl_button.h,cfl_dialog.h,cfl_draw.h,cfl_enums.h,cfl_group.h,cfl.h,cfl_image.h,cfl_input.h,cfl_macros.h,cfl_menu.h,cfl_misc.h,cfl_printer.h,cfl_surface.h,cfl_table.h,cfl_text.h,cfl_tree.h,cfl_utils.h,cfl_valuator.h,cfl_widget.h,cfl_window.h" \
         -i $CACHE_PACKAGE_PATH/cfltk/include \
-        -o $CACHE_PACKAGE_PATH/quickjs-fltk-cffi
+        -o $CACHE_PACKAGE_PATH/quickjs-fltk-cffi \
+        -l $LOCAL_PACKAGE_PATH/quickjs-fltk-cffi/libcfltk.so
 
     ./qjs-cffi \
         -sizeof-cflags="-I$CACHE_PACKAGE_PATH/cfltk/include" \
         -sizeof-include="cfl_box.h,cfl_browser.h,cfl_button.h,cfl_dialog.h,cfl_draw.h,cfl_enums.h,cfl_group.h,cfl.h,cfl_image.h,cfl_input.h,cfl_macros.h,cfl_menu.h,cfl_misc.h,cfl_printer.h,cfl_surface.h,cfl_table.h,cfl_text.h,cfl_tree.h,cfl_utils.h,cfl_valuator.h,cfl_widget.h,cfl_window.h" \
         -i $CACHE_PACKAGE_PATH/cfltk/include \
-        -o $CACHE_PACKAGE_PATH/quickjs-fltk-cffi/fltk.js
+        -o $CACHE_PACKAGE_PATH/quickjs-fltk-cffi/fltk.js \
+        -l $LOCAL_PACKAGE_PATH/quickjs-fltk-cffi/libcfltk.so
 
     echo build $PACKAGE_NAME $PACKAGE_VER
 }
