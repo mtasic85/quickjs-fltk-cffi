@@ -8,6 +8,8 @@ function prepare () {
     local ENV_PATH=$1
     local CACHE_PACKAGE_PATH=$2
 
+    git submodule update --init --recursive
+
     echo prepare $PACKAGE_NAME $PACKAGE_VER
 }
 
@@ -15,6 +17,25 @@ function build () {
     # args
     local ENV_PATH=$1
     local CACHE_PACKAGE_PATH=$2
+
+    cd cfltk
+    cmake -B bin -S . \
+     -DCMAKE_BUILD_TYPE=Release \
+     -DOPTION_USE_SYSTEM_LIBPNG=OFF \
+     -DOPTION_USE_SYSTEM_LIBJPEG=OFF \
+     -DOPTION_USE_SYSTEM_ZLIB=OFF \
+     -DOPTION_USE_GL=OFF \
+     -DFLTK_BUILD_EXAMPLES=OFF \
+     -DFLTK_BUILD_TEST=OFF \
+     -DOPTION_USE_THREADS=ON \
+     -DOPTION_LARGE_FILE=ON \
+     -DOPTION_BUILD_HTML_DOCUMENTATION=OFF \
+     -DOPTION_BUILD_PDF_DOCUMENTATION=OFF \
+     -DCMAKE_CXX_FLAGS="-fPIC" \
+     -DCMAKE_C_FLAGS="-fPIC" \
+     -DCMAKE_SHARED_LINKER_FLAGS="-fPIC" \
+     -DCFLTK_BUILD_SHARED=ON
+    cmake --build bin --parallel
 
     echo build $PACKAGE_NAME $PACKAGE_VER
 }
@@ -24,6 +45,8 @@ function install () {
     local ENV_PATH=$1
     local CACHE_PACKAGE_PATH=$2
     local LOCAL_PACKAGE_PATH=$3
+
+    cp $ENV_PATH/$CACHE_PACKAGE_PATH/cfltk/bin/libcfltk.so $ENV_PATH/$LOCAL_PACKAGE_PATH/libcfltk.so
 
     echo install $PACKAGE_NAME $PACKAGE_VER
 }
