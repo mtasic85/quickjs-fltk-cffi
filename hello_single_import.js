@@ -4,7 +4,7 @@ import {
     Fl_Widget_set_label,
     Fl_Window_new, Fl_Window_end, Fl_Window_show, Fl_Window_set_label,
     Fl_Button_new, Fl_Button_set_callback,
-} from './quickjs-fltk/fltk.js';
+} from 'local/quickjs-fltk-cffi/fltk.js';
 
 function b0_cb(widget, win) {
     Fl_Widget_set_label(widget, "b0 Works!");
@@ -33,22 +33,3 @@ function main() {
 }
 
 main();
-
-/*
-const App = (props) => {
-    return <Fl_Window x=100 y=100 width=400 height=300 title="Hello ...">
-        <Fl_Button ..../>
-        <Fl_Button ..../>
-    </Fl_Window>
-}
-*/
-
-/*
-<html>
-<head>
-</head>
-<body>
-    <div></div>
-</body>
-</html>
-*/
